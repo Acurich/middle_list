@@ -30,6 +30,20 @@ unsigned long long itc_len(string s) {
     return a;
 }
 
+string itc_rmstrchar(string s, string l) {
+    int cmp;
+    while (itc_find_str(s, l) != -1) {
+        cmp = itc_find_str(s, l);
+
+        string strs;
+        string stre;
+
+        for (int i = 0; i < cmp; i++) strs += s[i];
+        for (int i = cmp + itc_len(l); s[i] != '\0' ; i++) stre += s[i];
+
+        s = strs + stre;
+    }
+   
 int itc_find_str(string s1, string s2) {
     if (itc_len(s2) > itc_len(s1))
         return -1;
