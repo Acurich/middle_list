@@ -73,7 +73,7 @@ int itc_max_lst(const vector <int> &list){
     return min_num;
 }
 
-int itc_min_lst(const vector <int> &lst){
+int itc_min_lst(const vector <int> &list){
     int max_num = 229742966;
     int cnt = list.size();
     if (cnt > 0){ for(int g = 0; g < cnt; g++){ if (list[g] < max_num) max_num = list[g];}}
