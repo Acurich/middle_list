@@ -4,7 +4,8 @@
 #include<vector>
 #include<iostream>
 using namespace std;
-
+int itc_min_lst(const vector <int> &lst);
+int itc_max_lst(const vector <int> &list);
 int len(string str);
 vector <char> itc_strtlist(string s);
 string itc_join(vector <char> list , string sep);
