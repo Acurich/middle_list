@@ -10,7 +10,7 @@ void out_vect_int(const vector <int>& vec);
 vector<char> itc_strtlist(string s);
 string itc_join(vector <char> list, string sep);
 string itc_rmstrspc(string s);
-string itc_rmstrchar(string s, string l);
+string itc_rmstrchar(string s, string less);
 long itc_sumlst(const vector <int> &list);
 long itc_sum_even_lst(const vector <int> &list);
 long itc_sum_even_part_lst(const vector <int> &list);
