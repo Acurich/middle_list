@@ -4,7 +4,9 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+int get_len_str(string str);
+void out_vect_char(vector <char>& vec);
+void out_vect_int(const vector <int>& vec);
 vector<char> itc_strtlist(string s);
 string itc_join(vector <char> list, string sep);
 string itc_rmstrspc(string s);
