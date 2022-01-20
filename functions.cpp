@@ -1,211 +1,203 @@
 #include "middle_list.h"
-int get_len_str(string str)
-{
-	int i = 0;
-	while (str[i] != '\0'){i++;}
-	return i;
-}
 
-void out_vect_char(vector <char>& vec)
-{
-	int i = 0, len = vec.size();
-	while (i < len)
-	{
-		cout << vec[i] <<" ";
-		i++;
-	}
+int sizeofstr( string s ){
+    int cnt = 0;
+    while( s[cnt] != '\0' ){
+        cnt++;
+    }
+    return cnt;
 }
+vector<char> itc_strtlist(string s){
+    int dlina = sizeofstr(s);
+    vector <char> list;
+    for(int i = 0;i<dlina; i++){
+        list.push_back(s[i]);
+    }
+    return list;
+}
+string itc_join(vector<char> list , string sep){
+    int l = list.size();
+    string join = "";
+    for( int i = 0; i < l - 1 ; i++  ){
+        join += list[i];
+        join += sep;
 
-void out_vect_int(const vector <int>& vec)
-{
-	int i = 0, len = vec.size();
-	while (i < len)
-	{
-		cout << vec[i] <<" ";
-		i++;
-	}
+    }
+    join += list[l - 1];
+    return join;
 }
+string itc_rmstrspc(string s){
+    int cnt = sizeofstr(s);
+    string rmstrspc = "";
+    for(int i = 0; i < cnt ; i++){
+        if(s[i] != ' '){
+            rmstrspc += s[i];
+        }
+    }
+    return rmstrspc;
+}
+string itc_rmstrchar(string s,string less){
+    int dlinaless = sizeofstr(less);
+    int dlinastr = sizeofstr(s);
+    string rmstrchar = "";
+    for( int i = 0; i < dlinastr; i++ ){
+        bool iless = false;
+        for(int h = 0; h < dlinaless ; h++){
+            if( s[i] == less[h] ){
+                iless = true;
+            }
+        }
+        if( iless == false ){
+            rmstrchar += s[i];
+        }
+    }
 
-vector <char> itc_strtlist(string s)
-{
-	vector<char> res;
-	for (int i = 0; i < s.size(); i++) res.push_back(s[i]);
-	return res;
+    return rmstrchar;
 }
+long itc_sumlst(const vector<int> &list){
+    long sumlist = 0;
+    int dlinalist = list.size();
+    for( int i = 0; i < dlinalist; i++){
+        sumlist += list[i];
+    }
+    return sumlist;
+}
+long itc_sum_even_lst(const vector<int> &list){
+    long vecdlina = list.size();
+    long sumlist = 0;
+    for( int i = 1; i < vecdlina; i+=2 ){
+        sumlist += list[i];
+    }
+    return sumlist;
+}
+long itc_sum_even_part_lst(const vector<int> &list){
+    int dlinalist = list.size();
+    long sumpart = 0;
+    for( int i = 0 ; i < dlinalist; i++){
+        if( list[i] % 2 == 0 ){
+            sumpart += list[i];
+        }
+    }
+    return sumpart;
+}
+void itc_odd_even_separator_lst(const vector<int> &list,vector<int> &list1,vector<int> &list2){
+    int dlinalist = list.size();
+    for( int i = 0 ; i < dlinalist; i++ ){
+        if( list[i] % 2 == 0 ){
+            list1.push_back(list[i]);
+        } else{
+            list2.push_back(list[i]);
+        }
+    }
+}
+void itc_pos_neg_separator_lst(const vector<int> &list,vector<int> &list1,vector<int> &list2,vector<int> &list3){
+    int dlinalist = list.size();
+    for( int i = 0 ; i < dlinalist; i++ ){
+        if( list[i] > 0 ){
+            list3.push_back(list[i]);
+        } else if(list[i] == 0){
+            list2.push_back(list[i]);
+        } else{
+            list1.push_back(list[i]);
+        }
+    }
+}
+void itc_odd_even_analysis_lst(const vector<int> &list){
+    setlocale( LC_ALL,"Russian" );
+    int cntlist =  list.size();
+    vector<int> cnt;
+    vector<int> maxcnt;
+    vector<int> mincnt;
+    vector<long> sum;
+    vector<bool> empty;
+    for(int i =0; i < 2; i++  ){
+        cnt.push_back(0);
+        maxcnt.push_back(0);
+        mincnt.push_back(0);
+        sum.push_back(0);
+        empty.push_back(false);
+    }
+    for(int i = 0 ; i < cntlist ; i++){
+        int h;
+        if( list[i] % 2 == 0){
+        h = 0;
+        }else{
+        h = 1;
+        }
+        ++cnt[h];
+        if( empty[h] == false ) {
+            empty[h] = true;
+            maxcnt[h] = list[i];
+            mincnt[h] = list[i];
+        } else{
+            if( list[i] > maxcnt[h]){
+                maxcnt[h] = list[i];
+            }
+            if( list[i] < mincnt[h]){
+                mincnt[h] = list[i];
+            }
+        }
+            sum[h]+=list[i];
 
-string itc_join(vector <char> list, string sep)
-{
-	if (list.size() < 1) return "";
-	string res = "";
-	for (int i = 0; i < list.size(); i++) {
-		if (i != list.size() - 1) {
-			res += list[i];
-			for (int j = 0; j < sep.size(); j++) res += sep[j];
-		}
-		else res += lst[i];
-	}
-	return res;
+    }
+    cout<<"Àíàëèç ñïèñêà:"<<endl
+        <<"Êîëè÷åñòâî ÷åòíûõ ÷èñåë: "<<cnt[0]<<","<<"		"<<"Êîëè÷åñòâî íå÷åòíûõ ÷èñåë: "<<cnt[1]<<","<<endl
+        <<"Ìàêñèìàëüíàÿ ÷åòíàÿ öèôðà: "<<maxcnt[0]<<","<<"		"<<"Ìàêñèìàëüíàÿ íå÷åòíàÿ öèôðà: "<<maxcnt[1]<<","<<endl
+        <<"Ìèíèìàëüíàÿ ÷åòíàÿ öèôðà: "<<mincnt[0]<<","<<"		"<<"Ìèíèìàëüíàÿ íå÷åòíàÿ öèôðà: "<<mincnt[1]<<","<<endl
+        <<"Ñóììà ÷åòíûõ ÷èñåë: "<<sum[0]<<","<<"			"<<"Ñóììà íå÷åòíûõ ÷èñåë: "<<sum[1]<<","<<endl;
 }
+void itc_pos_neg_analysis_lst(const vector <int> &list){
+    setlocale( LC_ALL,"Russian" );
+    int cntlist =  list.size();
+    vector<int> cnt;
+    vector<int> maxcnt;
+    vector<int> mincnt;
+    vector<long> sum;
+    vector<bool> empty;
+    int zerocnt = 0;
+    for(int i =0; i < 2; i++  ){
+        cnt.push_back(0);
+        maxcnt.push_back(0);
+        mincnt.push_back(0);
+        sum.push_back(0);
+        empty.push_back(false);
+    }
+    for( int i = 0 ; i < cntlst; ++i ){
+    if( list[i] == 0 ){
+        zerocnt++;
+    } else{
+        int h = 0;
+        if(list[i] > 0){
+            h = 1;
+        }
+        ++cnt[h];
+        if( empty[h] == false ) {
+            empty[h] = true;
+            maxcnt[h] = list[i];
+            mincnt[h] = list[i];
+        } else{
+            if( lst[i] > maxcnt[h]){
+                maxcnt[h] = list[i];
+            }
+            if( list[i] < mincnt[h]){
+                mincnt[h] = list[i];
+            }
+        }
+            sum[h]+=list[i];
 
-string itc_rmstrspc(string s)
-{
-	int len = get_len_str(s), i = 0;
-	string res = "";
-	while (i < len)
-	{
-		if (s[i] != ' ')
-		{
-			res = res + s[i];
-		}
-		i++;
-	}
-	return res;
-}
+    }
 
-string itc_rmstrchar(string s, string less)
-{
-	int len1 = get_len_str(str), len2 = get_len_str(less), i = 0, sum = 0;
-	string res = "";
-	bool isDel = 0;
-	while (i < len1)
-	{
-		while (sum < len2)
-		{
-			if (s[i] == less[sum])
-			{
-				isDel = 1;
-			}
-			sum++;
-		}
-		sum = 0;
-		if (isDel == 0)
-		{
-			res = res + s[i];
-		}
-		isDel = 0;
-		i++;
-	}
-	return res;
 }
-
-long itc_sumlst(const vector <int>& list)
-{
-	long sum = 0;
-	int i = 0, len = list.size();
-	while (i < len)
-	{
-		sum = sum + list[i];
-		i++;
-	}
-	return sum;
+    vector <double> middle;
+    for(int i =0; i < 2; i++  ){
+        middle.push_back((double)(sum[i])/cnt[i] );
+    }
+    cout<<"Ïîëîæèòåëüíûå:			Îòðèöàòåëüíûå:"<<endl
+    <<"Êîëè÷åñòâî ÷èñåë: "<<cnt[1]<<","<<"	"<<"Êîëè÷åñòâî ÷èñåë: "<<cnt[0]<<","<<endl
+    <<"Ìàêñèìàëüíàÿ öèôðà: "<<maxcnt[1]<<","<<"		"<<"Ìàêñèìàëüíàÿ öèôðà: "<<maxcnt[0]<<","<<endl
+    <<"Ìèíèìàëüíàÿ öèôðà: "<<mincnt[1]<<","<<"		"<<"Ìèíèìàëüíàÿ öèôðà: "<<mincnt[0]<<","<<endl
+    <<"Ñóììà ÷èñåë: "<<sum[1]<<","<<"			"<<"Ñóììà ÷èñåë: "<<sum[0]<<","<<endl
+    <<"Ñðåäíåå çíà÷åíèå: "<<middle[1]<<" 		"<<"Ñðåäíåå çíà÷åíèå: "<<middle[0]<<endl
+    <<" "<<endl
+    <<"Êîëè÷åñòâî íóëåé: "<<zerocnt<<endl;
 }
-long itc_sum_even_lst(const vector <int>& list)
-{
-	int i = 0, len = list.size();
-	long res = 0;
-	while (i < len)
-	{
-		res = res + list[i];
-		i = i + 2;
-	}
-	return res;
-}
-
-long itc_sum_even_part_lst(const vector <int>& list)
-{
-	long res = 0;
-	int i = 0, len = list.size();
-	while (i < len)
-	{
-		if (list[i] % 2 == 0)
-		{
-			res = res + list[i];
-		}
-		i++;
-	}
-	return res;
-}
-
-void itc_odd_even_separator_lst(const vector <int>& list, vector <int>& list1, vector <int>& list2)
-{
-	if (list.size() < 1) return;
-	for (int i = 0; i < list.size(); i++) {
-		if (list[i] % 2 == 0) list1.push_back(list[i]);
-		else list2.push_back(list[i]);
-	}
-}
-
-void itc_pos_neg_separator_lst(const vector <int>& list, vector <int>& list1, vector <int>& list2, vector <int>& list3)
-{
-	if (list.size() < 1) return;
-	for (int i = 0; i < list.size(); i++) {
-		if (list[i] < 0) list1.push_back(list[i]);
-		else if (list[i] == 0) list2.push_back(list[i]);
-		else list3.push_back(list[i]);
-	}
-}
-void itc_odd_even_analysis_lst(const vector <int>& list)
-{
-	vector<int> list1, list2;
-	int listMax = -2147483648, listMin = 2147483647, list1Max = -2147483648, list1Min = 2147483647;
-	itc_odd_even_separator_lst(lst, even, odd);
-	if (even.size() > 0) {
-		for (int i = 0; i < list1.size(); i++) {
-			if (list1[i] > listMax) listMax = list1[i];
-			if (list1[i] < listMin) listMin = list1[i];} }
-	else {
-		listMax = 0;
-		listMin = 0; }
-	if (list2.size() > 0) {
-		for (int i = 0; i < list2.size(); i++) {
-			if (list2[i] > list1Max) list1Max = list2[i];
-			if (list2[i] < list1Min) list1Min = list2[i]; } }
-	else {
-		list1Max = 0;
-		list1Min = 0; }
-	cout<< "  List analysis:" << endl
-		<< "  Amount of even numbers: " << list1.size() << "\t\tAmount of odd numbers: " << list2.size() << endl
-		<< "  Maximum even number: " << listMax << "\t\tMaximum odd number: " << listMax << endl
-		<< "  Minimum even number: " << listMin << "\t\tMinimum odd number: " << list1Min << endl
-		<< "  Sum of even numbers: " << itc_sumlst(list1) << "\t\tSum of odd numbers: " << itc_sumlst(list2) << endl;
-}
-void itc_pos_neg_analysis_lst(const vector <int>& list)
-{
-	int len = list.size(), i = 0, nolCol = 0, colpol = 0, maxpol = -1, minpol = 10, sumpol = 0, colOtr = 0, maxOtr = -1, minOtr = 10, sumOtr = 0;
-	float srpol = 0, srOtr = 0;
-	while (i < len)
-	{
-		if (list[i] == 0) { nolCol++; }
-		else
-		{
-			if (list[i] > 0)
-			{
-				colpol++;
-				if (colpol == 1) { maxpol = list[i]; minpol = list[i]; }
-				if (list[i] > maxpol) { maxpol = list[i]; }
-				if (list[i] < minpol) { minpol = list[i]; }
-				sumpol = sumpol + lst[i];
-			}
-			if (list[i] < 0)
-			{
-				colOtr++;
-				if (colOtr == 1) { maxOtr = list[i]; minOtr = list[i]; }
-				if (list[i] > maxOtr) { maxOtr = list[i]; }
-				if (list[i] < minOtr) { minOtr = list[i]; }
-				sumOtr = sumOtr + list[i];
-			}
-		}
-		i++;
-	}
-	srpol = (float)sumpol / (float)colpol;
-	srOtr = (float)sumOtr / (float)colOtr;
-	if (colpol == 0) { srpol = -1; }
-	if (colOtr == 0) { srOtr = -1; }
-	cout << "Ïîëîæèòåëüíûå: " << '\t' << '\t' << '\t' << "Îòðèöàòåëüíûå: " <<endl;
-	cout << "Êîëè÷åñòâî ÷èñåë: " << colpol << '\t' << '\t' << "Êîëè÷åñòâî ÷èñåë: " <<colOtr <<endl;
-	cout << "Ìàêñèìàëüíàÿ öèôðà: " <<maxpol << '\t' << '\t' << "Ìàêñèìàëüíàÿ öèôðà: " <<maxOtr <<endl;
-	cout << "Ìèíèìàëüíàÿ öèôðà: " <<minpol << '\t' << '\t' << "Ìèíèìàëüíàÿ öèôðà: " <<minOtr <<endl;
-	cout << "Ñóììà ÷èñåë: " <<sumpol << '\t' << '\t' << '\t' << "Ñóììà ÷èñåë: " <<sumOtr <<endl;
-	cout << "Ñðåäíåå çíà÷åíèå: " <<srpol << '\t' << '\t' << "Ñðåäíåå çíà÷åíèå: " << srOtr << endl << endl;
-	cout << "Êîëè÷åñòâî íóëåé:" <<nolCol;
-}}
