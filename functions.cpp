@@ -121,7 +121,7 @@ void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, ve
 }
 
 void itc_pos_neg_analysis_lst(const vector <int> &list){
-    setlocale(LC_ALL, "RUS"); // language
+    setlocale(LC_ALL,"Russian"); // language
     vector <int> ot;
     vector <int> nul;
     vector <int> pol;
