@@ -122,9 +122,9 @@ void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, ve
     void itc_odd_even_analysis_lst(const vector<int> &list){
     if(list.size() == 0)
         return;
-    long long buffer1 = 0; //even numbers number
+    long long buffer1 = 0; 
     long long evenSum = 0;
-    long long buffer2 = 0; //odd numbers number
+    long long buffer2 = 0;
     long long oddSum = 0;
     for(long long i = 0; i < list.size(); i++){
         list[i] % 2 == 0 ? buffer1++ : buffer2++;
@@ -135,12 +135,12 @@ void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, ve
     cout << "Минимальная четная цифра: " << itc_min_vector_num(list, true) << ",        Минимальная нечетная цифра: " << itc_min_vector_num(list, false) << "," << endl;
     cout << "Сумма четных чисел: " << evenSum << ",        Сумма нечетных чисел: " << oddSum << ",";
 }
-void itc_pos_neg_analysis_lst(const vector <int> &lst){
+void itc_pos_neg_analysis_lst(const vector <int> &list){
     setlocale(LC_ALL, "rus"); // language
     vector <int> ot;
     vector <int> nul;
     vector <int> pol;
-    itc_pos_neg_separator_lst(lst, ot, nul, pol);
+    itc_pos_neg_separator_lst(list, ot, nul, pol);
     int s = itc_sumlst(ot);
     int kol = ot.size();
     cout << "Положительные:"<< '\t'	<< '\t' << "Отрицательные:" << endl;
