@@ -90,7 +90,7 @@ long long itc_sum_even_lst(const vector<int>& list) {
 long long itc_sum_even_part_lst(const vector<int>& list) {
     long long sum = 0;
     for (int i = 0; i < list.size(); i++) {
-        if (lst[i] % 2 == 0)
+        if (list[i] % 2 == 0)
             sum += list[i];
     }
     return sum;
