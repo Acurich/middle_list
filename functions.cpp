@@ -1,58 +1,48 @@
 #include "middle_list.h"
 
-int sizeofstr( string s ){
-    int cnt = 0;
-    while( s[cnt] != '\0' ){
-        cnt++;
-    }
-    return cnt;
+vector<char> itc_strtlist(string s) {
+    vector<char> s;
+    for (unsigned int i = 0; s[i] != '\0'; i++) res.push_back(s[i]);
+    return res;
 }
-vector<char> itc_strtlist(string s){
-    int dlina = sizeofstr(s);
-    vector <char> list;
-    for(int i = 0;i<dlina; i++){
-        list.push_back(s[i]);
-    }
-    return list;
-}
-string itc_join(vector<char> list , string sep){
-    int l = list.size();
-    string join = "";
-    for( int i = 0; i < l - 1 ; i++  ){
-        join += list[i];
-        join += sep;
 
+string itc_join(vector <char> list, string sep) {
+    string res = "";
+    if (list.size() > 0) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            res += list[i];
+            res += sep;
+        }
+        res += list[list.size() - 1];
     }
-    join += list[l - 1];
-    return join;
+    return res;
 }
-string itc_rmstrspc(string s){
-    int cnt = sizeofstr(s);
-    string rmstrspc = "";
-    for(int i = 0; i < cnt ; i++){
-        if(s[i] != ' '){
-            rmstrspc += s[i];
-        }
+string itc_rmstrspc(string s)
+{
+    string res = "";
+    for (int i = 0; i < len(s); i++)
+    {
+        if (s[i] != ' ')
+            res += s[i];
     }
-    return rmstrspc;
+    return res;
 }
-string itc_rmstrchar(string s,string less){
-    int dlinaless = sizeofstr(less);
-    int dlinastr = sizeofstr(s);
-    string rmstrchar = "";
-    for( int i = 0; i < dlinastr; i++ ){
-        bool iless = false;
-        for(int h = 0; h < dlinaless ; h++){
-            if( s[i] == less[h] ){
-                iless = true;
-            }
-        }
-        if( iless == false ){
-            rmstrchar += s[i];
-        }
-    }
 
-    return rmstrchar;
+string itc_rmstrchar(string s, string less)
+{
+    string res = "";
+    for (int i = 0; i < len(s); i++)
+    {
+        bool flag = false;
+        for (int j = 0; j < len(less); j++)
+        {
+            if (s[i] == less[j])
+                flag = true;
+        }
+        if (!flag)
+            res += s[i];
+    }
+    return res;
 }
 long itc_sumlst(const vector<int> &list){
     long sumlist = 0;
