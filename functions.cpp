@@ -50,31 +50,37 @@ string itc_rmstrchar(string s, string less)
     }
     return res;
 }
-long itc_sumlst(const vector<int> &list){
-    long sumlist = 0;
-    int dlinalist = list.size();
-    for( int i = 0; i < dlinalist; i++){
-        sumlist += list[i];
-    }
-    return sumlist;
-}
-long itc_sum_even_lst(const vector<int> &list){
-    long vecdlina = list.size();
-    long sumlist = 0;
-    for( int i = 1; i < vecdlina; i+=2 ){
-        sumlist += list[i];
-    }
-    return sumlist;
-}
-long itc_sum_even_part_lst(const vector<int> &list){
-    int dlinalist = list.size();
-    long sumpart = 0;
-    for( int i = 0 ; i < dlinalist; i++){
-        if( list[i] % 2 == 0 ){
-            sumpart += list[i];
+long itc_sumlst(const vector <int> &list){
+    int count = list.size();
+    long result = 0;
+    if(count != 0){
+        for(int i = 0; i < count; i++){
+            result += list[i];
         }
     }
-    return sumpart;
+    return result;
+}
+long itc_sum_even_lst(const vector <int> &list){
+    int count = list.size();
+    long result = 0;
+    if(count != 0){
+        for(int i = 0; i < count; i += 2){
+            result += list[i];
+        }
+    }
+    return result;
+}
+long itc_sum_even_part_lst(const vector <int> &list){
+    int count = list.size();
+    long result = 0;
+    if(count != 0){
+        for(int i = 0; i < count; i++){
+            if(list[i] % 2 == 0){
+                result += list[i];
+            }
+        }
+    }
+    return result;
 }
 void itc_odd_even_separator_lst(const vector<int> &list,vector<int> &list1,vector<int> &list2){
     int dlinalist = list.size();
