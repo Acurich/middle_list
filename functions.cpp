@@ -1,5 +1,11 @@
 #include "middle_list.h"
-
+int len(string str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+        i++;
+    return i;
+}
 vector<char> itc_strtlist(string s) {
     vector<char> s;
     for (unsigned int i = 0; s[i] != '\0'; i++) res.push_back(s[i]);
