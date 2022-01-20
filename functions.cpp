@@ -100,12 +100,12 @@ void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, ve
             list3.push_back(list[i]);
     }
 }
-int itc_max_lst(const vector <int> &lst){
+int itc_max_lst(const vector <int> &list){
     int max_num = -2147483648;
-    if (lst.size() > 0){
-        for(int i =0; i < lst.size(); i++){
-            if (lst[i] > max_num)
-                max_num = lst[i];
+    if (list.size() > 0){
+        for(int i =0; i < list.size(); i++){
+            if (list[i] > max_num)
+                max_num = list[i];
         }
     }
     return max_num;
@@ -113,10 +113,10 @@ int itc_max_lst(const vector <int> &lst){
 
 int itc_min_lst(const vector <int> &lst){
     int min_num = 2147483648;
-    if (lst.size() > 0){
-        for(int i =0; i < lst.size(); i++){
-            if (lst[i] < min_num)
-                min_num = lst[i];
+    if (list.size() > 0){
+        for(int i =0; i < list.size(); i++){
+            if (list[i] < min_num)
+                min_num = list[i];
         }
     }
     return min_num;
