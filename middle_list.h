@@ -18,6 +18,6 @@ void itc_odd_even_analysis_lst(const vector <int> &list);
 void itc_pos_neg_analysis_lst(const vector <int> &list);
 
 int itc_find_str(string s1, string s2);
-unsigned long long itc_len(string str);
+unsigned long long itc_len(string s);
 
 #endif //HOMEWORK_MIDDLE_LIST_H
