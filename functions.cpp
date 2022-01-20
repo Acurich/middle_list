@@ -46,13 +46,13 @@ string itc_rmstrchar(string s, string less)
 long itc_sumlst(const vector <int> &list){
     int cnt = list.size();
     long long res = 0;
-    if(cnt != 0){for(int g = 0; g < cnt; g++){res += list[i];}}
+    if(cnt != 0){for(int g = 0; g < cnt; g++){res += list[g];}}
     return res;
 }
 long itc_sum_even_lst(const vector <int> &list) {
     long long res = 0;
     int cnt = list.size();
-    if(cnt > 0){for (int g = 0; i < cnt; g++) if (g % 2 == 0) res += list[g];}
+    if(cnt > 0){for (int g = 0; g < cnt; g++) if (g % 2 == 0) res += list[g];}
     return res;
 }
 long itc_sum_even_part_lst(const vector <int> &list){
