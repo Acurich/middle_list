@@ -1,122 +1,104 @@
 #include "middle_list.h"
 
-vector<char> itc_strtlist(string s) {
-    vector<char> ans;
-    for (unsigned int i = 0; s[i] != '\0'; i++) ans.push_back(s[i]);
-    return ans;
-}
-
-string itc_join(vector <char> list, string sep) {
-    string ans = "";
-    if (list.size() > 0) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            ans += list[i];
-            ans += sep;
-        }
-        ans += list[list.size() - 1];
+vector <char> itc_strtlist(string s)
+{
+    vector <char> a;
+    for (int i = 0; s[i] != '\0'; i++) {
+        a.push_back(s[i]);
     }
-    return ans;
-}
-
-string itc_rmstrspc(string s) {
-    string ans = "";
-    for (int i = 0; s[i] != '\0'; i++) if (s[i] != ' ') ans += s[i];
-    return ans;
-}
-
-unsigned long long itc_len(string s) {
-    unsigned long long a = 0;
-    while (s[a] != '\0') a++;
     return a;
 }
 
-string itc_rmstrchar(string s, string l) {
-    int cmp;
-    while (itc_find_str(s, l) != -1) {
-        cmp = itc_find_str(s, l);
-
-        string strs;
-        string stre;
-
-        for (int i = 0; i < cmp; i++) strs += s[i];
-        for (int i = cmp + itc_len(l); s[i] != '\0' ; i++) stre += s[i];
-
-        s = strs + stre;
+string itc_join(vector <char> list, string sep)
+{
+    string result = "";
+    for (int i = 0; i < list.size() - 1; i++) {
+        result += list[i];
+        result += sep;
     }
-   
-int itc_find_str(string s1, string s2) {
-    if (itc_len(s2) > itc_len(s1))
-        return -1;
-    else
-    {
-        int answer = 1;
-        for (int i = 0; i < itc_len(s1); i++)
-        {
-            if (s1[i] == s2[0] && itc_len(s1) - i >= itc_len(s2))
-            {
-                for (int j = 1; j < itc_len(s2); j++)
-                {
-                    if (s2[j] == s1[i + j])
-                        answer++;
-                    else
-                    {
-                        answer = 1;
-                    }
-                }
-                if (answer == itc_len(s2))
-                    return i;
-            }
+    result += list[list.size() - 1];
+    return result;
+}
+
+string itc_rmstrspc(string s)
+{
+    string result = "";
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] != ' ')
+            result += s[i];
+    }
+    return result;
+}
+
+string itc_rmstrchar(string s, string less)
+{
+    string res = "";
+    int kek = 0;
+    int len = itc_len(less);
+    if (itc_len(s) < len)
+        return s;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] == less[kek]) {
+            if (len > 1 && kek < len - 1)
+                kek++;
+            else if (kek >= len - 1)
+                kek = 0;
         }
-        return -1;
+        else {
+            kek = 0;
+            result += s[i];
+        }
     }
+    return result;
 }
 
-long long itc_sumlst(const vector <int> &list){
-    
-    long long sum = 0;
-    for(int i = 0; i < list.size(); i++ ){
-        sum += list[i];
+long itc_sumlst(const vector <int>& list)
+{
+    int result = 0;
+    for (int i = 0; i < list.size(); i++) {
+        result += list[i];
     }
-    return sum;
-}
-long long itc_sum_even_lst(const vector<int>& list) {
-    long long sum = 0;
-    for (int i = 1; i < list.size(); i += 2) {
-        sum += list[i];
+    return result;
+}}
+long itc_sum_even_lst(const vector <int>& list)
+{
+    int result = 0;
+    for (int i = 0; i < list.size(); i++) {
+        if (i % 2 == 0)
+            result += list[i];
     }
-    return sum;
+    return result;
 }
 
-long long itc_sum_even_part_lst(const vector<int>& list) {
-    long long sum = 0;
+long itc_sum_even_part_lst(const vector <int>& list)
+{
+    int result = 0;
     for (int i = 0; i < list.size(); i++) {
         if (list[i] % 2 == 0)
-            sum += list[i];
+            result += list[i];
     }
-    return sum;
+    return result;
 }
 
-void itc_odd_even_separator_lst(const vector <int> &list, vector <int> &list1, vector <int> &list2)
+void itc_odd_even_separator_lst(const vector <int>& list, vector <int>& list1, vector <int>& list2)
 {
-    for(long long i =0; i < list.size(); i++){
-        if(list[i] % 2 == 0){
+    for (int i = 0; i < list.size(); i++) {
+        if (list[i] % 2 == 0)
             list1.push_back(list[i]);
-        }else{
+        else
             list2.push_back(list[i]);
-        }
     }
 }
 
-void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, vector <int> &list2, vector <int> &list3)
+void itc_pos_neg_separator_lst(const vector <int>& lst, vector <int>& negative, vector <int>& null, vector <int>& positive)
 {
-    for(long long i =0; i < list.size(); i++){
-        if (list[i] < 0){
-            list1.push_back(list[i]);
-        }else if (lst[i] == 0){
-            list2.push_back(list[i]);
-        }else{
-            list3.push_back(list[i]);
-        }
+    for (int i = 0; i < lst.size(); i++) {
+        if (lst[i] < 0)
+            negative.push_back(lst[i]);
+        else if (lst[i] == 0)
+            null.push_back(lst[i]);
+        else
+            positive.push_back(lst[i]);
     }
 }
     void itc_odd_even_analysis_lst(const vector<int> &list){
