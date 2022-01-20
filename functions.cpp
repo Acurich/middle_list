@@ -119,3 +119,19 @@ void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, ve
         }
     }
 }
+    void itc_odd_even_analysis_lst(const vector<int> &lst){
+    if(lst.size() == 0)
+        return;
+    long long buffer1 = 0; //even numbers number
+    long long evenSum = 0;
+    long long buffer2 = 0; //odd numbers number
+    long long oddSum = 0;
+    for(long long i = 0; i < lst.size(); i++){
+        lst[i] % 2 == 0 ? buffer1++ : buffer2++;
+        lst[i] % 2 == 0 ? evenSum += lst[i] : oddSum += lst[i];
+    }
+    cout << "Количество четных чисел: " << buffer1 << ",        Количество нечетных чисел: " << buffer2 << endl;
+    cout << "Максимальная четная цифра: " << itc_max_vector_num(lst, true) << ",        Максимальная нечетная цифра: " << itc_max_vector_num(lst, false) << "," << endl;
+    cout << "Минимальная четная цифра: " << itc_min_vector_num(lst, true) << ",        Минимальная нечетная цифра: " << itc_min_vector_num(lst, false) << "," << endl;
+    cout << "Сумма четных чисел: " << evenSum << ",        Сумма нечетных чисел: " << oddSum << ",";
+}
