@@ -5,7 +5,7 @@
 #include<iostream>
 using namespace std;
 
-int sizeofstr(string s);
+int len(string str);
 vector <char> itc_strtlist(string s);
 string itc_join(vector <char> list , string sep);
 string itc_rmstrspc(string s);
