@@ -26,7 +26,7 @@ string itc_rmstrspc(string s)
 {
     string res = "";
     int cnt = len(s);
-    if (cnt > 0) {for (int g = 0; g < cnt); g++){if (s[g] != ' ') res += s[g];}}
+    if (cnt > 0) {for (int g = 0; g < cnt; g++){if (s[g] != ' ') res += s[g];}}
     return res;
 }
 
