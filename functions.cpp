@@ -128,24 +128,21 @@ long itc_sum_even_part_lst(const vector <int>& list)
 
 void itc_odd_even_separator_lst(const vector <int>& list, vector <int>& list1, vector <int>& list2)
 {
-    for (int i = 0; i < list.size(); i++) {
-        if (list[i] % 2 == 0)
-            list1.push_back(list[i]);
-        else
-            list2.push_back(list[i]);
-    }
+	if (list.size() < 1) return;
+	for (int i = 0; i < list.size(); i++) {
+		if (list[i] % 2 == 0) list1.push_back(list[i]);
+		else list2.push_back(list[i]);
+	}
 }
 
-void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, vector <int> &list2, vector <int> &list3)
+void itc_pos_neg_separator_lst(const vector <int>& list, vector <int>& list1, vector <int>& list2, vector <int>& list3)
 {
-    for (int i = 0; i < list.size(); i++) {
-        if (list[i] < 0)
-            list1.push_back(list[i]);
-        else if (list[i] == 0)
-            list2.push_back(list[i]);
-        else
-            list3.push_back(list[i]);
-    }
+	if (list.size() < 1) return;
+	for (int i = 0; i < list.size(); i++) {
+		if (list[i] < 0) list1.push_back(list[i]);
+		else if (list[i] == 0) list2.push_back(list[i]);
+		else list3.push_back(list[i]);
+	}
 }
 void itc_odd_even_analysis_lst(const vector <int>& list)
 {
