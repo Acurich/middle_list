@@ -8,48 +8,51 @@ int len(string s)
 }
 vector<char> itc_strtlist(string s) {
     vector<char> res;
-    for (unsigned int g = 0; s[g] != '\0'; g++) res.push_back(s[g]);
+    int cnt = len(s);
+    if (cnt > 0){ for (unsigned int g = 0; s[g] != '\0'; g++) res.push_back(s[g]);}
     return res;
 }
 
 string itc_join(vector <char> list, string sep) {
     string res = "";
-    if (list.size() > 0) {
-        for (int g = 0; g < list.size() - 1; g++) { res += list[g]; res += sep;}
-        res += list[list.size() - 1];
+    int cnt = list.size();
+    if (cnt > 0) {
+        for (int g = 0; g < cnt - 1; g++) { res += list[g]; res += sep;}
+        res += list[cnt - 1];
     }
     return res;
 }
 string itc_rmstrspc(string s)
 {
     string res = "";
-    for (int g = 0; g < len(s); g++){if (s[g] != ' ') res += s[g];}
+    int cnt = len(s);
+    if (cnt > 0) {for (int g = 0; g < cnt); g++){if (s[g] != ' ') res += s[g];}}
     return res;
 }
 
 string itc_rmstrchar(string s, string less)
 {
     string res = "";
-    for (int g = 0; g < len(s); g++)
+    int cnt1 = len(s), cnt2 = len(less);
+    if (cnt1 > 0 && cnt2 > 0) {
+    for (int g = 0; g < cnt1; g++)
     {
         bool flag = false;
-        for (int f = 0; f < len(less); f++){if (s[g] == less[f]) flag = true;}
-        if (!flag) res += s[g];
+        for (int f = 0; f < cnt2; f++){if (s[g] == less[f]) flag = true;}
+        if (!flag) res += s[g];}
     }
     return res;
 }
 long itc_sumlst(const vector <int> &list){
     int cnt = list.size();
     long long res = 0;
-    if(cnt != 0){
-        for(int g = 0; g < cnt; g++){res += list[i];}
-    }
+    if(cnt != 0){for(int g = 0; g < cnt; g++){res += list[i];}}
     return res;
 }
 long itc_sum_even_lst(const vector <int> &list) {
     long long res = 0;
     int cnt = list.size();
-    for (int g = 0; i < cnt; g++) if (g % 2 == 0) res += lst[g];
+    if(cnt > 0){for (int g = 0; i < cnt; g++) if (g % 2 == 0) res += list[g];}
     return res;
 }
 long itc_sum_even_part_lst(const vector <int> &list){
@@ -60,11 +63,11 @@ long itc_sum_even_part_lst(const vector <int> &list){
 }
 void itc_odd_even_separator_lst(const vector <int> &list, vector <int> &list1, vector <int> &list2){
     int cnt = list.size();
-    for(int g = 0; g < cnt; g++){ if(list[g] % 2 == 0) list1.push_back(list[g]); else list2.push_back(list[g]);}
+    if (cnt > 0){ for(int g = 0; g < cnt; g++){ if(list[g] % 2 == 0) list1.push_back(list[g]); else list2.push_back(list[g]);}}
 }
 void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, vector <int> &list2, vector <int> &list3){
     int cnt = list.size();
-    for(int g = 0; g < cnt; g++){if(list[g] < 0) list1.push_back(list[g]); else if(list[g] == 0) list2.push_back(list[g]); else if(list[g] > 0) list3.push_back(list[g]);}
+    if (cnt > 0){ for(int g = 0; g < cnt; g++){if(list[g] < 0) list1.push_back(list[g]); else if(list[g] == 0) list2.push_back(list[g]); else if(list[g] > 0) list3.push_back(list[g]);}}
 }
 int itc_max_lst(const vector <int> &list){
     int min_num = -229742966;
