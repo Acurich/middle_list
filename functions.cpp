@@ -119,3 +119,20 @@ void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, ve
         }
     }
 }
+
+void itc_pos_neg_analysis_lst(const vector <int> &list){
+    setlocale(LC_ALL, "RUS"); // language
+    vector <int> ot;
+    vector <int> nul;
+    vector <int> pol;
+    itc_pos_neg_separator_lst(list, ot, nul, pol);
+    int s = itc_sumlst(ot);
+    int kol = ot.size();
+    cout << "Ïîëîæèòåëüíûå:"<< '\t'	<< '\t' << "Îòðèöàòåëüíûå:" << endl;
+    cout << "Êîëè÷åñòâî ÷èñåë: " << pol.size() << "," << '\t'	<< '\t' << "Êîëè÷åñòâî ÷èñåë: " << ot.size() << "," << endl;
+    cout << "Ìàêñèìàëüíàÿ öèôðà: " << itc_max_lst(pol) << "," << '\t'	<< '\t' << "Ìàêñèìàëüíàÿ öèôðà: " << itc_max_lst(ot) << "," << endl;
+    cout << "Ìèíèìàëüíàÿ öèôðà: "<< itc_min_lst(pol) << "," << '\t' << '\t' << "Ìèíèìàëüíàÿ öèôðà: "<< itc_min_lst(ot) << "," << endl;
+    cout << "Ñóììà ÷èñåë: "<< itc_sumlst(pol) << "," << '\t'	<< '\t' << "Ñóììà ÷èñåë: "<< itc_sumlst(ot) << "," << endl;
+    cout << "Ñðåäíåå çíà÷åíèå: "<< itc_sumlst(pol) / pol.size()<< '\t'	<< '\t' << "Ñðåäíåå çíà÷åíèå: "<< s / kol << endl;
+    cout << "Êîëè÷åñòâî íóëåé: " << nul.size() << endl;
+}
