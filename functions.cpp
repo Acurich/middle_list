@@ -90,15 +90,15 @@ void itc_odd_even_separator_lst(const vector <int>& list, vector <int>& list1, v
     }
 }
 
-void itc_pos_neg_separator_lst(const vector <int>& lst, vector <int>& negative, vector <int>& null, vector <int>& positive)
+void itc_pos_neg_separator_lst(const vector <int> &list, vector <int> &list1, vector <int> &list2, vector <int> &list3)
 {
-    for (int i = 0; i < lst.size(); i++) {
-        if (lst[i] < 0)
-            negative.push_back(lst[i]);
-        else if (lst[i] == 0)
-            null.push_back(lst[i]);
+    for (int i = 0; i < list.size(); i++) {
+        if (list[i] < 0)
+            list1.push_back(list[i]);
+        else if (list[i] == 0)
+            list2.push_back(list[i]);
         else
-            positive.push_back(lst[i]);
+            list3.push_back(list[i]);
     }
 }
     void itc_odd_even_analysis_lst(const vector<int> &list){
